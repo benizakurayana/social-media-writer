@@ -1,0 +1,5 @@
+pytrends
+google-api-python-client
+gradio==5.9.1
+gradio_client==1.5.2
+openai==1.58.1
