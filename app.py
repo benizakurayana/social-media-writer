@@ -6,10 +6,14 @@ import gradio as gr
 from my_calling_functions import FUNCTIONS, get_trending_searches, google_res
 
 
+# Load environment variables from .env file if it exists (for local execution.)
+if os.path.exists('.env'):
+    load_dotenv()
+LLM_DEPLOYMENT_NAME = os.getenv('LLM_DEPLOYMENT_NAME')
+
 def llm_calls(country, output_lang):
     # OpenAI API client
     client = OpenAI()  # 無參數，即自動抓取環境變數
-    LLM_DEPLOYMENT_NAME = os.getenv('LLM_DEPLOYMENT_NAME')
 
     # 定義query內容
     # query = f"{country}的今日熱門關鍵字有哪些，選擇一個關鍵字，選擇的方式以新聞事件或人名為優先，其次是趣味性，並以google搜尋，了解此關鍵字內容，根據內容用{output_lang}撰寫一篇100字社群貼文，第一行為標題，適度的使用表情符號作為項目符號或表達情感，並在結尾加上三個hashtag"
@@ -127,15 +131,11 @@ gradio_app = gr.Interface(
         )],
     outputs=["textbox"],
     title="Social Media Writer",
-    description="Generate a social media post based on the trend of the selected country, in the selected language"
+    description=f"Generate a social media post based on the trend of the selected country, in the selected language<br />Using model: {LLM_DEPLOYMENT_NAME}"
 )
 
 
 if __name__ == "__main__":
-    # Load environment variables from .env file if it exists (for local execution.)
-    if os.path.exists('.env'):
-        load_dotenv()
-
     gradio_app.launch()
 
 
