@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 import os
 import json
 from openai import OpenAI
@@ -131,6 +132,10 @@ gradio_app = gr.Interface(
 
 
 if __name__ == "__main__":
+    # Load environment variables from .env file if it exists (for local execution.)
+    if os.path.exists('.env'):
+        load_dotenv()
+
     gradio_app.launch()
 
 
