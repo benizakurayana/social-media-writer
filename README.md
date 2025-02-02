@@ -37,10 +37,10 @@ If it says "This Space is sleeping due to inactivity," please click the "Restart
   - Gradio App: `app.py` (Main application using Gradio for UI)  
   - Function definitions: `my_calling_functions.py` (For OpenAI function callings to choose from) 
 - Flow:
-  - First call of OpenAI API: Provide prompt and two function descriptions. Will receive the chosen function and arguments to use.
+  - First call of OpenAI API: Provide prompt and two function descriptions. Will receive the chosen function and arguments to use. <br>
     (Correct function choice should be pytrends, ane three arguments to use)
   - Run the chosen function with the given arguments. Will get the trending words.
-  - Second call of OpenAI API: Provide prompt and two function descriptions and trending keywords. Will receive the chosen function and argument to use.
+  - Second call of OpenAI API: Provide prompt and two function descriptions and trending keywords. Will receive the chosen function and argument to use. <br>
     (Correct function choice should be Google search and a trending keyword as the argument)
   - Run the chosen function with the given arguments. Will get the Google search results.
   - Third call of OpenAI API: Provide the information from the previous two OpenAI API calls and executions. Will receive the generated content.
